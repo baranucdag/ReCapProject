@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class NorthWindContext:DbContext
+    public class NorthWindContext : DbContext         // DbContext EntityFramwork nesnesidir (bağlantı).
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -15,8 +15,8 @@ namespace DataAccess.Concrete.EntityFramework
 
         }
 
-        //public DbSet<> MyProperty { get; set; }           //tabloları ilişkilendirme
-
-
+        //public DbSet<Brand> Brand { get; set; }           //tabloları ilişkilendirme
+        //public DbSet<Colour> Colour { get; set; }
+        //public DbSet<Car> Car { get; set; }
     }
 }
