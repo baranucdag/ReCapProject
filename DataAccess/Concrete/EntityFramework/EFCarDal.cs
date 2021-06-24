@@ -1,5 +1,7 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
+using Entities.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFCarDal: IEntityRepositoryBase<Car, DBContext>:ICarDal
+    public class EFCarDal : IEntityRepositoryBase<Car, DatabaseContext>, ICarDal
     {
+       
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFColourDal : IEntityRepositoryBase<Colour, DBContext>:IColourDal
+    public class EFColourDal : IEntityRepositoryBase<Colour, DatabaseContext>,IColourDal
     {
     }
 }
