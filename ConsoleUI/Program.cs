@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using System;
 
@@ -12,7 +13,38 @@ namespace ConsoleUI
 
             colourTest();
 
-            brandTest();
+            //brandTest();
+
+            customerTest();
+
+            rentalTest();
+
+            UserManager userManager = new UserManager(new EFUserDal());
+            var resultUser = userManager.GetAll();
+            foreach (var items in resultUser)
+            {
+                Console.WriteLine(items.FirstName+items.LastName);
+            }
+        }
+
+        private static void rentalTest()
+        {
+            RentalManager rentalManager = new RentalManager(new EFRentalDal());
+            var resultRental = rentalManager.GetAll();
+            foreach (var items in resultRental)
+            {
+                Console.WriteLine(items.RentalId + items.CarId + items.CustomerId);
+            }
+        }
+
+        private static void customerTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EFCustomerDal());
+            var resultCustomer = customerManager.GetAll();
+            foreach (var items in resultCustomer)
+            {
+                Console.WriteLine(items.CustomerId + items.CompanyName);
+            }
         }
 
         private static void brandTest()

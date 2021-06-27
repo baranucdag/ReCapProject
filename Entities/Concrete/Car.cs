@@ -11,6 +11,7 @@ namespace Entities.Concrete
     {
         public int CarId { get; set; }
         public int BrandId { get; set; }
+        public int ColourId { get; set; }
         public int ModelYear { get; set; }
         public int DailyPrice { get; set; }
         public string Description { get; set; }
