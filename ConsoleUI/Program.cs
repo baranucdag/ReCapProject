@@ -33,7 +33,7 @@ namespace ConsoleUI
             var resultRental = rentalManager.GetAll();
             foreach (var items in resultRental)
             {
-                Console.WriteLine(items.RentalId + items.CarId + items.CustomerId);
+                Console.WriteLine(items.RentalId + items.CarId );
             }
         }
 
