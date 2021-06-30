@@ -15,15 +15,27 @@ namespace ConsoleUI
 
             //brandTest();
 
-            customerTest();
+            //customerTest();
 
             rentalTest();
 
+            userTest();
+
+            CarManager carManager = new CarManager(new EFCarDal());
+            var result = carManager.GetCarDetails();
+            foreach (var item in result)
+            {
+                Console.WriteLine("car Id:"+item.CarId+" colour Name:"+item.ColourName+" brand Name:"+item.BrandName+" model Year"+item.ModelYear);
+            }
+        }
+
+        private static void userTest()
+        {
             UserManager userManager = new UserManager(new EFUserDal());
             var resultUser = userManager.GetAll();
             foreach (var items in resultUser)
             {
-                Console.WriteLine(items.FirstName+items.LastName);
+                Console.WriteLine(items.FirstName + items.LastName);
             }
         }
 

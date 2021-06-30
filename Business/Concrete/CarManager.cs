@@ -31,5 +31,10 @@ namespace Business.Concrete
         {
             return _carDal.GetAll(c=>c.DailyPrice>=min && c.DailyPrice>=max);
         }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
+        }
     }
 }
