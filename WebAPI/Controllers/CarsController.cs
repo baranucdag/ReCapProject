@@ -44,7 +44,14 @@ namespace WebAPI.Controllers
             var result = _carService.GetCarDetails();
             return Ok(result);
         }
-        
+
+        [HttpPost("add")]
+        public IActionResult Add(Car car)
+        {
+            var result = _carService.Add(car);
+            return Ok(result);
+        }
+
     }
 }
 
