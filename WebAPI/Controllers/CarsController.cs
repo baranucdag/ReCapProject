@@ -52,6 +52,20 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpPost("uptade")]
+        public IActionResult Uptade(Car car)
+        {
+            var result = _carService.Uptade(car);
+            return Ok(result);
+        }
+
+        [HttpPost("delete")]
+        public IActionResult Delete(Car car)
+        {
+            var result = _carService.Delete(car);
+            return Ok(result);
+        }
+
     }
 }
 
