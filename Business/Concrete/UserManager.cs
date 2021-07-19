@@ -1,4 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Constans;
+using Core.Results.Utilities;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -16,9 +19,9 @@ namespace Business.Concrete
         {
             _userService = userDal;
         }
-        public List<User> GetAll()
+        public IDataResult<List<User>> GetAll()
         {
-            return _userService.GetAll();
+            return new SuccesDataResult<List<User>>(_userService.GetAll(),Messages.UserListed);
         }
     }
 }

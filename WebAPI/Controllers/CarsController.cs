@@ -15,17 +15,20 @@ namespace WebAPI.Controllers
     {
 
         ICarService _carService;
-        public CarsController(ICarService productService)
+        public CarsController(ICarService carService)
         {
-            _carService = productService;
+            _carService = carService;
         }
 
         [HttpGet("getall")]
-        public IActionResult GetAll(Car car)
+        public IActionResult GetAll()
         {
             var result = _carService.GetAll();
-
-            return Ok(result);
+            if (result.Succes)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
 
@@ -63,7 +66,11 @@ namespace WebAPI.Controllers
         public IActionResult Delete(Car car)
         {
             var result = _carService.Delete(car);
-            return Ok(result);
+            if (result.Succes)
+            {
+                return Ok(result.Message);
+            }
+            return BadRequest(result.Message);
         }
 
     }

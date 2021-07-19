@@ -14,5 +14,6 @@ namespace Business.Constans
         public static string CarListed = "Cars has been listed";
         public static string CarUpdated = "car has been Uptaded";
         public static string CarDeleted = "car has been Deleted";
+        public static string UserListed = "Users Listed";
     }
 }

@@ -17,6 +17,9 @@ namespace Business.DependencyResolvers.Autofac
         {
             builder.RegisterType<CarManager>().As<ICarService>().SingleInstance();
             builder.RegisterType<EFCarDal>().As<ICarDal>().SingleInstance();
+
+            builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
+            builder.RegisterType<EFUserDal>().As<IUserDal>().SingleInstance();
         }
     }
 }

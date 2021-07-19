@@ -94,7 +94,5 @@ namespace ConsoleUI
         //        Console.WriteLine(items.CarId + "  /  " + items.Description + "\n ");
         //    }
         //}
-        //jhsdflksdfsd
-        //jdsfdsf
     }
 }
