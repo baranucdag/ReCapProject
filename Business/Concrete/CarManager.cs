@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constans;
+using Business.ValidationRuıles;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Results.Utilities;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -22,6 +24,7 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
+            ValidationTool.Validate(new CarValidator(), car);
             _carDal.Add(car);
             return new Result(true, Messages.CarAdded);
         }
