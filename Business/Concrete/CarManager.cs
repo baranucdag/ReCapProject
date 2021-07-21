@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constans;
 using Business.ValidationRuıles;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Results.Utilities;
 using Core.Utilities.Results;
@@ -22,8 +23,10 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
+            //business codes
             ValidationTool.Validate(new CarValidator(), car);
             _carDal.Add(car);
             return new Result(true, Messages.CarAdded);
