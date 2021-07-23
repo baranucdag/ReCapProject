@@ -27,15 +27,19 @@ namespace Business.Concrete
         public IResult Add(Car car)
         {
             //business codes
-            ValidationTool.Validate(new CarValidator(), car);
-            _carDal.Add(car);
-            return new Result(true, Messages.CarAdded);
+            if (controlBrandLimitCar(car.BrandId).Succes && CheckModelAndPrice(car.ModelYear, car.DailyPrice).Succes)
+            {
+                _carDal.Add(car);
+                return new Result(true, Messages.CarAdded);
+            }
+
+            return new ErrorResult();
         }
 
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
-            return new Result(true,Messages.CarDeleted);
+            return new Result(true, Messages.CarDeleted);
         }
 
         public IDataResult<List<Car>> GetAll()
@@ -58,10 +62,32 @@ namespace Business.Concrete
             return new SuccesDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(), Messages.CarListed);
         }
 
+
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Uptade(Car car)
         {
+            controlBrandLimitCar(car.BrandId);
+
             _carDal.Uptade(car);
             return new Result(true, Messages.CarUpdated);
+        }
+
+        private IResult controlBrandLimitCar(int brandId)
+        {
+            var modelCount = _carDal.GetAll(c => c.BrandId == brandId).Count;
+            if (modelCount >= 15)
+            {
+                return new ErrorResult(Messages.carLimitError);
+            }
+            return new SuccesResult();
+        }
+        private IResult CheckModelAndPrice(int modelYear, int price)
+        {
+            if (modelYear>=2015 && price<250)
+            {
+                return new ErrorResult(Messages.carPriceLower);   
+            }
+            return new SuccesResult();
         }
     }
 }
