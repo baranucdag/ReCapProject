@@ -4,6 +4,7 @@ using Business.ValidationRuıles;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Results.Utilities;
+using Core.Utilities.BusinessRules;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -26,14 +27,14 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
-            //business codes
-            if (controlBrandLimitCar(car.BrandId).Succes && CheckModelAndPrice(car.ModelYear, car.DailyPrice).Succes)
-            {
-                _carDal.Add(car);
-                return new Result(true, Messages.CarAdded);
-            }
+           IResult result = BusinessRules.Run(controlBrandLimitCar(car.BrandId), CheckModelAndPrice(car.ModelYear, car.DailyPrice));
 
-            return new ErrorResult();
+            if (result !=null)
+            {
+                return result;
+            }
+            _carDal.Add(car);
+            return new Result(true, Messages.CarAdded);
         }
 
         public IResult Delete(Car car)

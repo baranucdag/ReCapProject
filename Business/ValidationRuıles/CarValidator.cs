@@ -13,7 +13,7 @@ namespace Business.ValidationRuıles
         public CarValidator()
         {
             RuleFor(c => c.Description).NotEmpty();
-            RuleFor(c => c.DailyPrice).GreaterThan(55);
+            //RuleFor(c => c.DailyPrice).GreaterThan(55);
             RuleFor(c => c.ModelYear).GreaterThan(2010).When(c => c.BrandId == 1);
             //RuleFor(c => c.Description).Must(StartWithA);
         }
