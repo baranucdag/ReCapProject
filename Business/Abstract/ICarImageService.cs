@@ -1,6 +1,7 @@
 ﻿using Core.Results.Utilities;
 using Core.Utilities.Results;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,11 @@ namespace Business.Abstract
 {
     public interface ICarImageService
     {
+        IResult Add(IFormFile file, CarImage carImage);
+        IResult Delete(CarImage carImage);
+        IResult Update(IFormFile file, CarImage carImage);
+        IDataResult<CarImage> Get(int id);
         IDataResult<List<CarImage>> GetAll();
-        IDataResult<CarImage> Get();
-        IResult Add();
-        IResult Update();
-        IResult Delete();
+        IDataResult<List<CarImage>> GetImagesByCarId(int id);
     }
 }
