@@ -32,7 +32,7 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpGet("getbybrandid")]
+        [HttpGet("getbycarid")]
         public IActionResult GetByBrandId(int id)
         {
             var result = _carService.GetAllByBrandId(id);
@@ -64,7 +64,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("uptade")]
+        [HttpPost("update")]
         public IActionResult Uptade(Car car)
         {
             var result = _carService.Uptade(car);

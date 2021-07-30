@@ -23,7 +23,7 @@ namespace Business.Concrete
         public IResult Add(Colour colour)
         {
             _colourDal.Add(colour);
-            return new SuccesResult(Messages.ColourUpdated);
+            return new SuccesResult(Messages.BrandUpdated);
         }
 
         public IResult Delete(Colour colour)
@@ -36,7 +36,7 @@ namespace Business.Concrete
         public IResult Update(Colour colour)
         {
             _colourDal.Uptade(colour);
-            return new SuccesResult(Messages.ColourUpdated);
+            return new SuccesResult(Messages.BrandUpdated);
 
         }
 

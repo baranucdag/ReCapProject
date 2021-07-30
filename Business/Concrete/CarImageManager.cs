@@ -28,7 +28,7 @@ namespace Business.Concrete
             var ımageCount = _carImageDal.GetAll().Count;
             if (ımageCount >= 5)
             {
-                return new ErrorResult("ne car must have 5 or less images");
+                return new ErrorResult("A car must have 5 or less images");
             }
 
             var imageResult = FileHelper.Upload(formFile);
