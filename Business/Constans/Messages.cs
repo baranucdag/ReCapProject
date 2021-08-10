@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,12 +18,12 @@ namespace Business.Constans
         public static string UserListed = "Users Listed";
         public static string carLimitError = "Car limit Exceted";
         public static string carPriceLower = "If car model year is equal or over 2015, car price has to be more than 250 dolar ";
-
         public static string BrandAdded = "User added";
         public static string BrandDeleted = "User deleted";
         public static string UserUpdated = "User updated";
 
-        public static string BrandUpdated { get; internal set; }
-        public static string ColourDeleted { get; internal set; }
+        public static string BrandUpdated = "Brand updated";
+        public static string ColourDeleted = "Colour deleted";
+        public static string AuthorizationDenied = "Authorization denied";
     }
 }

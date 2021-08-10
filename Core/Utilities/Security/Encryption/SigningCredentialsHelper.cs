@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Core.Utilities.Security.Encryption
 {
-    public class SecurityKeyHelper
+    public class SigningCredentialsHelper
     {
-        public static SecurityKey CreateSecurityKey(string securityKey)
+        public static SigningCredentials CreateSigningCredentials(SecurityKey securityKey)
         {
-            return new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey));
+            return new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512Signature);
         }
     }
 }

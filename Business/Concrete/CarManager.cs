@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constans;
 using Business.ValidationRuıles;
 using Core.Aspects.Autofac.Validation;
@@ -25,6 +26,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CarValidator))]
+        [SecuredOperation("admin,car.add")]
         public IResult Add(Car car)
         {
            IResult result = BusinessRules.Run(controlBrandLimitCar(car.BrandId), CheckModelAndPrice(car.ModelYear, car.DailyPrice));
