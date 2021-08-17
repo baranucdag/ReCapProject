@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Core.Results.Utilities;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -16,9 +18,34 @@ namespace Business.Concrete
         {
             _rentalDal = rentalDal;
         }
-        public List<Rental> GetAll()
+
+        public IResult Add(Rental rental)
         {
-            return _rentalDal.GetAll();
+            _rentalDal.Add(rental);
+            return new SuccesResult("Rental added");
+
+        }
+
+        public IResult Delete(Rental rental)
+        {
+            _rentalDal.Delete(rental);
+            return new SuccesResult("Rental deleted");
+        }
+
+        public IDataResult<List<Rental>> GetAll()
+        {
+            return new SuccesDataResult<List<Rental>>(_rentalDal.GetAll(), "Rental listed");
+        }
+
+        public IDataResult<Rental> GetByRentalId(int rentalId)
+        {
+            return new SuccesDataResult<Rental>(_rentalDal.Get(b => b.RentalId == rentalId),"rental listed.");
+        }
+
+        public IResult Update(Rental rental)
+        {
+            _rentalDal.Uptade(rental);
+            return new SuccesResult("Rental updated.");
         }
     }
 }

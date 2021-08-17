@@ -35,7 +35,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Brand>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccesDataResult<List<Brand>>(_brandDal.GetAll(),"brands listed");
         }
 
         public IDataResult<Brand> GetByBrandId(int id)

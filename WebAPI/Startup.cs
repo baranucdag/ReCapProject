@@ -44,8 +44,8 @@ namespace WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
-            //services.AddSingleton<ICarService, CarManager>();
-            //services.AddSingleton<ICarDal, EFCarDal>();
+            //services.AddSingleton<IColourService, ColourManager>();
+            //services.AddSingleton<IColourDal, EFColourDal>();
 
             //services.AddSingleton<IUserService, UserManager>();
             //services.AddSingleton<IUserDal, EFUserDal>();

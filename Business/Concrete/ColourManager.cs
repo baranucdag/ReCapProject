@@ -42,7 +42,7 @@ namespace Business.Concrete
 
         IDataResult<List<Colour>> IColourService.GetAll()
         {
-            return new SuccesDataResult<List<Colour>>(_colourDal.GetAll());
+            return new SuccesDataResult<List<Colour>>(_colourDal.GetAll(),"Colours listed");
         }
 
         IDataResult<Colour> IColourService.GetByColourId(int id)
