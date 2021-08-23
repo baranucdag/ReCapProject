@@ -65,6 +65,11 @@ namespace Business.Concrete
             return new SuccesDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(), Messages.CarListed);
         }
 
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByBrandId(int brandId)
+        {
+            return new SuccesDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(p => p.BrandId == brandId));
+        }
+
 
         [ValidationAspect(typeof(CarValidator))]
         public IResult Uptade(Car car)
@@ -92,5 +97,7 @@ namespace Business.Concrete
             }
             return new SuccesResult();
         }
+
+        
     }
 }
