@@ -55,15 +55,14 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getcardetailbybrandid")]
-        public IActionResult GetCarDetails(int brandId)
+        public IActionResult GetCarDetailsByBrandId(int brandId)
         {
-            var result = _carService.getCarDetailsByBrandId(brandId);
+            var result = _carService.GetCarDetailsByBrandId(brandId);
             if (result.Succes)
             {
                 return Ok(result);
             }
             return BadRequest(result);
-
         }
 
         [HttpPost("add")]

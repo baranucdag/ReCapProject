@@ -67,7 +67,7 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDto>> GetCarDetailsByBrandId(int brandId)
         {
-            return new SuccesDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(p => p.BrandId == brandId));
+            return new SuccesDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(c=>c.BrandId==brandId));
         }
 
 

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EFCarDal : IEntityRepositoryBase<Car, DatabaseContext>, ICarDal
     {
-        public List<CarDetailDto> GetCarDetails()
+        public List<CarDetailDto> GetCarDetails(Expression<Func<CarDetailDto, bool>> filter = null)
         {
             using (DatabaseContext context = new DatabaseContext())
             {
@@ -20,8 +21,8 @@ namespace DataAccess.Concrete.EntityFramework
                              join b in context.Brands
                              on c.BrandId equals b.BrandId
                              join co in context.Colours
-                             on c.CarId equals co.ColourId
-                             select new CarDetailDto()
+                             on c.ColourId equals co.ColourId
+                             select new CarDetailDto
                              {
                                  CarId = c.CarId,
                                  BrandName = b.BrandName,
@@ -30,7 +31,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Description = c.Description,
                                  ModelYear = c.ModelYear
                              };
-                return result.ToList();
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
             }
         }
 
