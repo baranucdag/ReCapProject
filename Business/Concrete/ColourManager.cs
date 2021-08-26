@@ -40,12 +40,12 @@ namespace Business.Concrete
 
         }
 
-        IDataResult<List<Colour>> IColourService.GetAll()
+        public IDataResult<List<Colour>> GetAll()
         {
-            return new SuccesDataResult<List<Colour>>(_colourDal.GetAll(),"Colours listed");
+            return new SuccesDataResult<List<Colour>>(_colourDal.GetAll(), "colours listed");
         }
 
-        IDataResult<Colour> IColourService.GetByColourId(int id)
+         IDataResult<Colour> IColourService.GetByColourId(int id)
         {
             return new SuccesDataResult<Colour>(_colourDal.Get(c => c.ColourId == id));
         }
