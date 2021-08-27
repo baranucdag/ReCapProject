@@ -52,7 +52,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("uptade")]
+        [HttpPost("update")]
         public IActionResult Uptade(Colour colour)
         {
             var result = _colourService.Update(colour);

@@ -23,20 +23,20 @@ namespace Business.Concrete
         public IResult Add(Colour colour)
         {
             _colourDal.Add(colour);
-            return new SuccesResult(Messages.BrandUpdated);
+            return new SuccesResult("colour added");
         }
 
         public IResult Delete(Colour colour)
         {
             _colourDal.Delete(colour);
-            return new SuccesResult(Messages.ColourDeleted);
+            return new SuccesResult("colour deleted");
 
         }
 
         public IResult Update(Colour colour)
         {
             _colourDal.Uptade(colour);
-            return new SuccesResult(Messages.BrandUpdated);
+            return new SuccesResult("colour updated");
 
         }
 
@@ -45,9 +45,10 @@ namespace Business.Concrete
             return new SuccesDataResult<List<Colour>>(_colourDal.GetAll(), "colours listed");
         }
 
-         IDataResult<Colour> IColourService.GetByColourId(int id)
+         public IDataResult<Colour> GetByColourId(int id)
         {
             return new SuccesDataResult<Colour>(_colourDal.Get(c => c.ColourId == id));
         }
     }
 }
+ 

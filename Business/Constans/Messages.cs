@@ -18,7 +18,7 @@ namespace Business.Constans
         public static string UserListed = "Users Listed";
         public static string carLimitError = "Car limit Exceted";
         public static string carPriceLower = "If car model year is equal or over 2015, car price has to be more than 250 dolar ";
-        public static string BrandAdded = "User added";
+        public static string BrandAdded = "Brand added";
         public static string BrandDeleted = "User deleted";
         public static string UserUpdated = "User updated";
 
